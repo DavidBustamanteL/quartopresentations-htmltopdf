@@ -1,0 +1,49 @@
+<script>
+/* Reusable JGU footer for Quarto Reveal.js presentations. */
+(() => {
+  function initJguFooter() {
+    const root = document.querySelector('.reveal .slides');
+    if (!root || !window.Reveal) return;
+
+    const title = (
+      document.querySelector('#title-slide h1.title')?.textContent ||
+      document.querySelector('meta[property="og:title"]')?.content ||
+      document.title || ''
+    ).trim();
+    const author = (
+      [...document.querySelectorAll('#title-slide .quarto-title-author-name')]
+        .map(node => node.textContent.trim()).filter(Boolean).join(', ') ||
+      document.querySelector('meta[name="author"]')?.content || ''
+    ).trim();
+
+    // Leaf sections are the actual slides; parent sections can be vertical stacks.
+    const slides = [...root.querySelectorAll('section')]
+      .filter(section => !section.querySelector(':scope > section'));
+
+    slides.forEach((slide, index) => {
+      // Prefer Quarto's cover identifier; support a title slide with a different id.
+      const isCover = slide.id === 'title-slide' || slide.classList.contains('quarto-title-block');
+      if (isCover) return;
+      let footer = slide.querySelector(':scope > .jgu-footer');
+      if (!footer) {
+        footer = document.createElement('div');
+        footer.className = 'jgu-footer';
+        footer.setAttribute('aria-label', 'Presentation footer');
+        footer.innerHTML = '<div class="jgu-footer-author"></div>' +
+          '<div class="jgu-footer-title"></div>' +
+          '<div class="jgu-footer-number"></div>';
+        slide.appendChild(footer);
+      }
+      footer.querySelector('.jgu-footer-author').textContent = author;
+      footer.querySelector('.jgu-footer-title').textContent = title;
+      footer.querySelector('.jgu-footer-number').textContent = `${index + 1} / ${slides.length}`;
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initJguFooter, { once: true });
+  } else {
+    initJguFooter();
+  }
+})();
+</script>
