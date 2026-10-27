@@ -1,0 +1,289 @@
+/* Reveal.js adaptation of the supplied texsx Beamer theme.
+   Official JGU logo supplied as PDF and converted to SVG for browser display. */
+:root {
+  --jgu-red: #cc0029;       /* CMYK (0,1,.8,.2) approximate RGB conversion */
+  --jgu-dark: #4d4d4d;      /* K=70% */
+  --jgu-light: #999999;     /* K=40% */
+  --jgu-white: #ffffff;
+}
+.reveal { font-family: Arial, Helvetica, sans-serif; font-size: 21px; color: #222; }
+.reveal .slides { text-align: left; }
+.reveal .slides section { box-sizing: border-box; }
+/* A Beamer-like fixed slide canvas. Quarto emits .slide:not(.center)
+   {height: 100%}; all content slides also start at the same top coordinate.
+   Percentages are relative to Reveal's scaled slide canvas, NOT the viewport. */
+.reveal .slides > section.slide:not(#title-slide) {
+  box-sizing: border-box !important;
+  top: 0 !important;
+  bottom: auto !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  padding: 126px 48px 65px !important;
+  background: #fff;
+}
+/* Keep the content block within the slide if the text is long. */
+.reveal .slides > section.slide:not(#title-slide) > .jgu-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Beamer slide banner: upper dark stripe, grey title stripe, logo area at left */
+/* Header: JGU logo on the left; grey upper and title bands */
+.reveal .slides section:not(#title-slide)::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 98px;
+  box-sizing: border-box;
+  background-image: url("jgu_logo_kasten.svg"),
+    linear-gradient(to bottom, var(--jgu-dark) 0 28px, var(--jgu-light) 28px 98px);
+  background-size: 98px 98px, 100% 100%;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.reveal .slides section:not(#title-slide) > h2:first-child,
+.reveal .slides section:not(#title-slide) > h1:first-child {
+  position: absolute; top: 36px; left: 148px; right: 30px; margin: 0;
+  height: 55px; display: flex; align-items: center;
+  color: white; font-size: 29px; font-weight: 500; line-height: 1.1;
+  text-transform: none; text-shadow: none; z-index: 1;
+}
+/* Footer belongs to Reveal's SCALED slide canvas, not the browser viewport. */
+.reveal .slides section .jgu-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 34px;
+  display: grid;
+  grid-template-columns: 25% 65% 10%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.2;
+  z-index: 50;
+  pointer-events: none;
+}
+.reveal .slides section .jgu-footer > div {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reveal .slides section .jgu-footer-author { background: var(--jgu-dark); }
+.reveal .slides section .jgu-footer-title { background: var(--jgu-light); }
+.reveal .slides section .jgu-footer-number {
+  background: var(--jgu-red);
+  justify-content: center;
+  padding: 0 4px;
+  font-weight: 700;
+}
+.reveal .slide-number { display: none !important; }
+.reveal .slides section#title-slide {
+  height: 100% !important;
+  min-height: 100% !important;
+  top: 0 !important;
+  position: relative;
+  background: linear-gradient(to bottom, var(--jgu-light) 0 69%, white 69% 70%, var(--jgu-dark) 70% 100%);
+  padding: 0; color: white;
+  /* The normal slide layout is controlled by Reveal, not by CSS height. */
+}
+/* On the title page, the official logo occupies the bottom-left block */
+.reveal #title-slide::before {
+  content: "";
+  position: absolute; bottom: 0; left: 0;
+  width: 25%; height: 30%;
+  background-color: #c8102e;
+  background-image: url("jgu_logo_kasten.svg");
+  background-position: center center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+/* Keep the cover text in the correct grey bands. */
+.reveal #title-slide h1.title {
+  position: absolute;
+  top: 22%; left: 25%; right: 5%;
+  margin: 0;
+  color: white; font-size: 48px; font-weight: 600;
+  text-align: right; line-height: 1.2; text-transform: none; text-shadow: none;
+}
+.reveal #title-slide .subtitle {
+  position: absolute;
+  top: 40%; left: 25%; right: 5%;
+  margin: 0;
+  color: white; font-size: 28px; line-height: 1.2; text-align: right;
+}
+.reveal #title-slide .quarto-title-authors {
+  position: absolute;
+  top: 79%; left: 31%; right: 5%;
+  margin: 0; text-align: left;
+}
+.reveal #title-slide .quarto-title-author-name {
+  font-size: 22px; color: white; text-align: left; margin: 0;
+}
+.reveal p, .reveal li { line-height: 1.35; }
+.reveal li { margin-bottom: .14em; }
+.reveal pre { width: 100%; font-size: .74em; box-shadow: none; }
+.reveal pre code { max-height: 350px; font-size: 16px; line-height: 1.28; }
+.reveal code:not(pre code) { color: #9c0020; }
+.reveal ul li::marker { color: var(--jgu-red); }
+.reveal a { color: #a50021; }
+.reveal table { font-size: 17px; }
+.reveal th { background: var(--jgu-dark); color: white; }
+.reveal .callout { font-size: .84em; }
+.reveal .callout.callout-note { border-left-color: var(--jgu-dark); }
+.reveal .callout.callout-warning { border-left-color: var(--jgu-red); }
+@media print { .reveal .slides section { break-after: page; } }
+
+
+
+/* Keep the cover free of the per-slide footer. */
+.reveal #title-slide .jgu-footer { display: none; }
+
+
+/* ==========================================
+   COVER: AUTHOR, INSTITUTION AND DATE
+   ========================================== */
+
+:root {
+  --cover-info-size: 24px;
+  --cover-info-line-height: 1.4;
+  --cover-info-left: 31%;
+  --cover-info-color: #ffffff;
+}
+
+/* Author and institution positioning */
+.reveal #title-slide .quarto-title-authors {
+  position: absolute;
+  top: 79%;
+  left: var(--cover-info-left);
+  right: 5%;
+  bottom: auto;
+
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  transform: none !important;
+  z-index: 5;
+}
+
+/* Remove Quarto's internal centering */
+.reveal #title-slide .quarto-title-author {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+/* Same typography for author and institution */
+.reveal #title-slide .quarto-title-author-name,
+.reveal #title-slide .quarto-title-author-name *,
+.reveal #title-slide .quarto-title-affiliation,
+.reveal #title-slide .quarto-title-affiliation *,
+.reveal #title-slide .quarto-title-author-affiliation,
+.reveal #title-slide .quarto-title-author-affiliation * {
+  font-size: var(--cover-info-size) !important;
+  font-weight: 400 !important;
+  line-height: var(--cover-info-line-height) !important;
+  color: var(--cover-info-color) !important;
+  text-align: left !important;
+}
+
+/* Date positioning and typography */
+.reveal #title-slide .date,
+.reveal #title-slide p.date {
+  position: absolute;
+  top: 88%;
+  left: var(--cover-info-left);
+  right: 5%;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-size: var(--cover-info-size) !important;
+  font-weight: 400 !important;
+  line-height: var(--cover-info-line-height) !important;
+  color: var(--cover-info-color) !important;
+  text-align: left !important;
+  z-index: 5;
+}
+
+
+
+/* ==========================================
+   PDF EXPORT / PRINT LAYOUT
+   ========================================== */
+
+@media print {
+  .reveal .slides section.slide:not(#title-slide) {
+    box-sizing: border-box !important;
+    padding: 126px 48px 65px !important;
+    margin: 0 !important;
+    background-color: #fff !important;
+
+    top: auto !important;
+    bottom: auto !important;
+    min-height: 0 !important;
+  }
+
+  .reveal .slides section.slide:not(#title-slide) {
+    position: relative !important;
+  }
+
+  .reveal .slides section.slide:not(#title-slide)::before {
+    top: 0 !important;
+  }
+
+  .reveal .slides section.slide:not(#title-slide) > h1:first-child,
+  .reveal .slides section.slide:not(#title-slide) > h2:first-child {
+    position: absolute !important;
+    top: 36px !important;
+    margin: 0 !important;
+  }
+
+  .reveal .slides section.slide:not(#title-slide) > .jgu-footer {
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    display: grid !important;
+  }
+
+  .reveal .slides section#title-slide {
+    position: relative !important;
+    top: auto !important;
+  }
+}
+
+
+/* ==========================================
+   FIX: QUARTO TABLE OF CONTENTS
+   ========================================== */
+
+.reveal .slides section#table-of-contents,
+.reveal .slides section#TOC {
+  box-sizing: border-box !important;
+  top: 0 !important;
+  bottom: auto !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  padding: 126px 48px 65px !important;
+}
+
+/* Position the ToC title in the JGU header */
+.reveal .slides section#table-of-contents > h2,
+.reveal .slides section#TOC > h2 {
+  position: absolute !important;
+  top: 36px !important;
+  left: 148px !important;
+  right: 30px !important;
+  margin: 0 !important;
+  color: white !important;
+}
