@@ -175,9 +175,10 @@ First Steps:
 ```bash
 python --version
 winget install --id Python.Python.3.14 -e
-py -3.14 -m ensurepip --upgrade
-python -m pip install --user pipx
-python -m pipx ensurepath
+[Environment]::SetEnvironmentVariable("PY_PYTHON", "3.14", "User")
+py -m ensurepip --upgrade
+py -m pip install --user pipx
+py -m pipx ensurepath
 ```
 
 Close and reopen the terminal:
@@ -186,4 +187,4 @@ pipx install ghgrab
 ghgrab --help
 ```
 
-![](ghgrab.png){height=300px fig-align="center"}
+![](ghgrab.png){height=250px fig-align="center"}
