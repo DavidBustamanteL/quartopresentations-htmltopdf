@@ -3,7 +3,7 @@ title: "Introduction to Git, GitHub, and GitLab"
 subtitle: "Creating, cloning, and updating repositories"
 
 author: "David Bustamante"
-institute: "Empirical Social Choice"
+institute: "Empirical Social Choice   -   Collective Decision-Making"
 date: today
 date-format: "MMMM D, YYYY"
 
