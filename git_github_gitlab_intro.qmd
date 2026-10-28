@@ -169,7 +169,7 @@ Do not commit passwords, access tokens, or other sensitive information. Use a `.
 You can usually clone a **public** repository without signing in. Pushing changes—or cloning a **private** repository—requires authentication. Depending on the setup, this may use a browser sign-in, a credential manager, an SSH key, or an access token. Do not paste your account password into Git.
 :::
 
-## 9. Excourse: ghgrab ##
+## 9. Excursus: ghgrab ##
 
 First Steps:
 ```bash
