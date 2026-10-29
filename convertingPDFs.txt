@@ -10,3 +10,7 @@ python -m playwright install chromium
 
 python clickablePDFs.py "NAME.html" -o "NAME.pdf"
 python clickablePDFs.py "git_github_gitlab_intro.html" -o "Introduction to Git, GitHub, and GitLab.pdf"
+
+
+
+test
